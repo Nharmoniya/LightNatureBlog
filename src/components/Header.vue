@@ -16,8 +16,8 @@
       </h1>
       </router-link>
       <router-link to="/edit" >
-      <i class="el-icon-edit" title="创建博客"><span>创建</span></i>
-      <img class="avatar" src="@/img/mylogo.jpg">
+        <i class="el-icon-edit" title="创建博客"><span>创建</span></i>
+        <img class="avatar" src="@/img/mylogo.jpg">
       </router-link>
     </template>
   </header>
