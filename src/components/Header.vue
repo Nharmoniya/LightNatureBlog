@@ -1,7 +1,7 @@
 <template>
   <header :class="{login:isLogin,'no-login':!isLogin}">
     <template v-if="!isLogin">
-      <h1>Make our dreams come true together</h1>
+      <h1 title="首页">Make our dreams come true together</h1>
       <p>精品博客汇聚</p>
       <div class="btns">
         <el-button>立即登录</el-button>
@@ -10,10 +10,15 @@
     </template>
 
     <template v-if="isLogin">
-      <h1>Let's share</h1>
-      <i class="el-icon-edit"><span>创建</span></i>
+      <router-link to="/index" class="router-index">
+      <h1 title="首页">
+        Let's share
+      </h1>
+      </router-link>
+      <router-link to="/edit" >
+      <i class="el-icon-edit" title="创建博客"><span>创建</span></i>
       <img class="avatar" src="@/img/mylogo.jpg">
-
+      </router-link>
     </template>
   </header>
 </template>
@@ -30,8 +35,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+.router-index{
+  text-decoration: none;
+}
 header.no-login {
+
   background-color: rgb(5, 139, 140);
   color: white;
   display: flex;
@@ -57,6 +65,7 @@ header.login {
   background-color: rgb(5, 139, 140);
   display: flex;
   align-items: center;
+  justify-content: space-between;
   h1 {
     margin-bottom: 5px;
     margin-top: 5px;
@@ -68,7 +77,7 @@ header.login {
   }
   .el-icon-edit {
     color: #fff;
-    font-size: 30px;
+    font-size: 20px;
     span{
       font-size: 16px;
     }
@@ -79,6 +88,7 @@ header.login {
     border: 1px solid #fff;
     border-radius: 50%;
     margin-left: 15px;
+
   }
 }
 </style>
