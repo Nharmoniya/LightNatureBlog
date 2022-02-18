@@ -1,8 +1,7 @@
 <template>
     <footer>
       <p>©源码链接：<a target="_blank" href="https://github.com/Nharmoniya/Light-nature-blog">https://github.com/Nharmoniya/Light-nature-blog</a> </p>
-      <p><a href="tel:18652480015">联系方式：18652480015</a></p>
-      <p>微信：Cropsrain874572491</p>
+      <p><a href="tel:18652480015">联系方式：18652480015</a> | 微信：Cropsrain874572491</p>
     </footer>
 </template>
 

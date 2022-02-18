@@ -21,7 +21,7 @@ export default {
     return request(URL.LOGIN, 'POST', {username, password});
   },
   logout() {
-    return request(URL.LOGOUT);
+    return request(URL.LOGOUT,localStorage.removeItem('token'));
   },
   getInfo() {
     return request(URL.GET_INFO);
