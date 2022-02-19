@@ -5,7 +5,7 @@
     </footer>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 a {
   color: #999;
   text-decoration: none;
@@ -17,6 +17,7 @@ footer{
   flex-direction: column;
   flex-wrap: nowrap;
   text-align: center;
+  font-size: 12px;
 }
 p{
   padding-top: 12px;

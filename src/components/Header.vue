@@ -1,18 +1,18 @@
 <template>
   <header :class="{login:isLogin,'no-login':!isLogin}">
     <template v-if="!isLogin">
-      <h1 title="首页">Make our dreams come true together</h1>
+      <h1 title="首页"><router-link to="index">Make our dreams come true together</router-link></h1>
       <p>精品博客汇聚</p>
       <div class="btns">
         <router-link to="/login">
-        <el-button class="el-login">
-         立即登录
-        </el-button>
+          <el-button class="el-login">
+            立即登录
+          </el-button>
         </router-link>
         <router-link to="/register">
-        <el-button>
-        注册账号
-        </el-button>
+          <el-button>
+            注册账号
+          </el-button>
         </router-link>
       </div>
     </template>
@@ -23,12 +23,17 @@
           Let's share
         </h1>
       </router-link>
+
       <div class="user">
-        <i class="el-icon-edit" title="创建博客"></i>
+        <i class="el-icon-right"></i>
         <img class="avatar" :src="user.avatar" :alt="user.username" :title="user.username"/>
         <ul>
-          <li><router-link to="my">我的</router-link></li>
-          <li><a href="#" @click="onLogout">注销</a></li>
+          <li>
+
+            <router-link to="my"><i class="el-icon-user-solid">我的</i></router-link>
+          </li>
+          <li><a href="#" @click="onLogout"><i class="el-icon-d-arrow-right">注销</i></a></li>
+          <li><router-link to="create"><i class="el-icon-plus" title="创建博客">创建</i></router-link></li>
         </ul>
       </div>
     </template>
@@ -57,10 +62,10 @@ export default {
   methods: {
     ...mapActions([
       'checkLogin',
-        'logout'
+      'logout'
     ]),
-    onLogout(){
-      this.logout()
+    onLogout() {
+      this.logout();
     }
   }
 };
@@ -79,7 +84,10 @@ header.no-login {
   display: flex;
   flex-direction: column;
   align-items: center;
-
+a{
+  text-decoration: none;
+  color: #fff;
+}
   p {
     margin-top: 12px;
   }
@@ -91,7 +99,8 @@ header.no-login {
   .btns {
     margin-top: 68px;
     margin-bottom: 34px;
-    .el-login{
+
+    .el-login {
       margin-right: 20px;
     }
   }
@@ -102,6 +111,7 @@ header.login {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   h1 {
     margin-bottom: 5px;
     margin-top: 5px;
@@ -112,11 +122,9 @@ header.login {
     flex: 1;
   }
 
-  .el-icon-edit {
-    color: #fff;
-    font-size: 25px;
-    transform: translateY(-8px);
-
+  .el-icon-right {
+    color: white;
+    font-size: 45px;
   }
 
   .avatar {
@@ -127,9 +135,9 @@ header.login {
     margin-left: 15px;
 
   }
+
   .user {
     position: relative;
-
     ul {
       display: none;
       position: absolute;
@@ -139,11 +147,13 @@ header.login {
       margin:0;
       padding: 0;
       background-color: #fff;
-
+      transform: translateX(14px);
+      width: 70px;
+      text-align: center;
       a {
         text-decoration: none;
         color: #333;
-        font-size: 12px;
+        font-size: 14px;
         display: block;
         padding: 5px 10px;
 
@@ -151,7 +161,6 @@ header.login {
           background-color: #eaeaea;
         }
       }
-
     }
 
     &:hover ul {

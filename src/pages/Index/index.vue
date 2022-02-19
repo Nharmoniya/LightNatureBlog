@@ -1,30 +1,29 @@
 <template>
   <body>
   <section>
+    <router-link class="item" v-for="blog in blogs" :to="`/detail/${blog.id}`" :key="blog">
     <div class="section1">
      <div class="head">
-       <img src="@/img/mylogo.jpg"/>
-       <figcaption>Nature</figcaption>
-       <p></p>
+       <img :src="blog.user.avatar" :alt="blog.user.username"/>
+       <figcaption>{{ blog.user.username }}</figcaption>
      </div>
      <div class="fontbody">
-       <h3>前端异步大揭秘 <span>3天前</span></h3>
-       <p>本文以一个简单的文件读写为例，讲解了异步的不同写法，包括 普通的 callback、ES2016中的Promise和Generator</p>
+       <h3>{{blog.title}} <span>{{friendlyDate(blog.createdAt)}}</span></h3>
+       <p>{{ blog.description }}</p>
      </div>
     </div>
-    <hr/>
-    <div class="section1">
-      <div class="head">
-        <img src="@/img/mylogo.jpg"/>
-        <figcaption>Nature</figcaption>
-        <p></p>
-      </div>
-      <div class="fontbody">
-        <h3>前端异步大揭秘 <span>3天前</span></h3>
-        <p>本文以一个简单的文件读写为例，讲解了异步的不同写法，包括 普通的 callback、ES2016中的Promise和Generator</p>
-      </div>
-    </div>
+    </router-link>
   </section>
+  <section>
+    <el-pagination
+        class="nav"
+        background
+        layout="prev, pager, next"
+        :total="total"
+        @current-change="handleCurrentChange">
+    </el-pagination>
+  </section>
+
   </body>
 </template>
 

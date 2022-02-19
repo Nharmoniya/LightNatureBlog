@@ -37,6 +37,7 @@ a{
 
 html,body,#app{
   height: 100%;
+
 }
 
 #app {
