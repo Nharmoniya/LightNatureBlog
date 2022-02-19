@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" v-loading="false">
     <Header id="header"></Header>
     <main id="main">
     <router-view/>
@@ -18,18 +18,22 @@ export default {
   components: {
     Header,
     Footer,
-  }
+  },
 };
 </script>
 
 <style lang="scss">
+@import "~@/assets/base.scss";
 *{
   box-sizing: border-box;
   padding: 0px;
   margin:0px;
 
 }
-
+a{
+  text-decoration: none;
+  color: $themeLighterColor;
+}
 
 html,body,#app{
   height: 100%;

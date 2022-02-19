@@ -9,10 +9,10 @@ window.auth = auth
 window.blog = blog
 
 
+
 export default {
   data(){
     return{
-      msg:'Welcome to Your Vue.js App'
     }
   },
 }

@@ -24,7 +24,6 @@
         <p>本文以一个简单的文件读写为例，讲解了异步的不同写法，包括 普通的 callback、ES2016中的Promise和Generator</p>
       </div>
     </div>
-    <hr/>
   </section>
   </body>
 </template>

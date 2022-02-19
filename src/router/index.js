@@ -1,54 +1,69 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Index from '@/pages/Index/index.vue'
-import Create from '@/pages/Create/create.vue'
-import Detail from '@/pages/Detail/detail.vue'
-import Edit from '@/pages/Edit/edit.vue'
-import Login from '@/pages/Login/login.vue'
-import My from '@/pages/My/My.vue'
-import Register from '@/pages/Register/register.vue'
-import User from '@/pages/User/User.vue'
+import Vue from 'vue';
+import Router from 'vue-router';
+import store from '@/store';
 
 
-Vue.use(Router)
+Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
-      component: Index
+      component:()=>import('@/pages/Index/index.vue'),
     },
     {
-      path:'/index',
-      component:Index
+      path: '/index',
+      component:()=>import('@/pages/Index/index.vue'),
     },
     {
-      path:'/create',
-      component:Create
+      path: '/create',
+      component:()=>import('@/pages/Create/create.vue'),
+      meta: {requiresAuth: true}
     },
     {
-      path:'/detail',
-      component:Detail
+      path: '/detail/:blogId',
+      component:()=>import('@/pages/Detail/detail.vue'),
     },
     {
-      path:'/edit',
-      component:Edit
+      path: '/edit/:blogId',
+      component:()=>import('@/pages/Edit/edit.vue'),
+      meta: {requiresAuth: true}
     },
     {
-      path:'/login',
-      component:Login
+      path: '/login',
+      component:()=>import('@/pages/Login/login.vue'),
     },
     {
-      path:'/my',
-      component:My
+      path: '/my',
+      component:()=>import('@/pages/My/My.vue'),
+      meta: {requiresAuth: true}
     },
     {
-      path:'/register',
-      component:Register
+      path: '/register',
+      component:()=>import('@/pages/Register/register.vue'),
     },
     {
-      path:'/user',
-      component:User
+      path: '/user/:userId',
+      component:()=>import('@/pages/User/User.vue'),
     }
   ]
-})
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    store.dispatch('checkLogin').then(isLogin => {
+      if (!isLogin) {
+        next({
+          path: '/login',
+          query: {redirect: to.fullPath}
+        });
+      } else {
+        next();
+      }
+    });
+  } else {
+    next();//确保一定要调用next
+  }
+});
+
+export default router;

@@ -1,4 +1,7 @@
 module.exports = {
   lintOnSave: false,
-  runtimeCompiler:true
+  runtimeCompiler:true,
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/lightnatureblogpage/'
+    : '/'
 }
