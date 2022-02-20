@@ -30,10 +30,10 @@
         <ul>
           <li>
 
-            <router-link to="my"><i class="el-icon-user-solid">我的</i></router-link>
+            <router-link to="/my"><i class="el-icon-user-solid">我的</i></router-link>
           </li>
           <li><a href="#" @click="onLogout"><i class="el-icon-d-arrow-right">注销</i></a></li>
-          <li><router-link to="create"><i class="el-icon-plus" title="创建博客">创建</i></router-link></li>
+          <li><router-link to="/create"><i class="el-icon-plus" title="创建博客">创建</i></router-link></li>
         </ul>
       </div>
     </template>

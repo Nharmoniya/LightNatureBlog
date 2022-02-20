@@ -1,7 +1,7 @@
 <template>
   <div id="detail">
     <section class="user-info" >
-      <img :src="user.avatar" :alt="user.name" class="avatar">
+      <img :src="user.avatar" :alt="user.name" class="avatar"/>
       <h3>{{title}}</h3>
       <p>
         <router-link :to="`/user/${user.id}`">{{user.username}}</router-link>
